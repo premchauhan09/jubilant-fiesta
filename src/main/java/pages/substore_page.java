@@ -28,17 +28,12 @@ public class substore_page extends StartupPage {
 		public By getAnchorTagLocatorInventory = By.xpath("//a[contains(text(),'Inventory')]");
 		public By getModuleSignoutLocator = By.xpath("//i[contains(@class,'sign-out')]");
 		public By getHoverText = By.xpath("//h6[contains(text(),'To change, you can always click here.')]");
-//		TC-4 Locators
-		
+//		TC-4 Locators	
 		public By getAnchorTagLocatorPharmacy = By.xpath("//a[contains(text(),'Pharmacy')]");
 //		TC-5 Locators
 		public By getSubModuleLocator = By.xpath("//ul[contains(@class,'nav-tabs')]//li//a");
-		
 //		TC-6 Locators
-		
-		public By getAnchorTagLocatorByText(String anchorTagName) {
-		return By.xpath("//a[contains(text(),'" + anchorTagName + "')]");
-	}
+		public By getAnchorTagLocatorByText(String anchorTagName) {return By.xpath("//a[contains(text(),'" + anchorTagName + "')]");}
 		public By getAnchorTagLocatorStock = By.xpath("//a[contains(text(),'Stock')]");
 		public By getAnchorTagLocatorByTextInventoryRequisition = By.xpath("//a[contains(text(),'Inventory Requisition')]");
 		public By getAnchorTagLocatorConsumption = By.xpath("//a[contains(text(),'Consumption')]");
@@ -59,7 +54,6 @@ public class substore_page extends StartupPage {
 		public By getRadioButtonLocatorCancelled = By.xpath("//label[contains(text(),'" + "Cancelled" + "')]/span");
 		public By getRadioButtonLocatorWithdrawn = By.xpath("//label[contains(text(),'" + "Withdrawn" + "')]/span");
 		public By getRadioButtonLocatorAll = By.xpath("//label[contains(text(),'" + "All" + "')]/span");
-		
 //		TC-9 Locators
 		public By getRequestButton = By.cssSelector("input#save_requisition");
 		public By getTargetInventory = By.xpath("//input[@id='activeInventory']");
@@ -74,15 +68,33 @@ public class substore_page extends StartupPage {
 	public substore_page(WebDriver driver) {
 		super(driver);
 	}
-
-
+	
 	/**
-	 * @Test 1.1 : about the method loginToHealthAppByGivenValidCredetial( )
-	 * @param : Map<String, String>
-	 * @description : fill usernameTextbox & passwordTextbox and click on sign in button
-	 * @return : Boolean
-	 * @author : Yaksha
+	 * @Test Case 1.1: Verify login functionality using valid credentials
+	 *
+	 * @method loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData)
+	 *
+	 * @param expectedData A map containing valid login credentials:
+	 *                     - "username": the username to enter
+	 *                     - "password": the password to enter
+	 *
+	 * @steps
+	 * 1. Locate the username text field element.
+	 * 2. Highlight the username text field.
+	 * 3. Enter the provided username into the username text field.
+	 * 4. Locate the password text field element.
+	 * 5. Highlight the password text field.
+	 * 6. Enter the provided password into the password text field.
+	 * 7. Locate and highlight the sign-in button.
+	 * 8. Click the sign-in button to initiate login.
+	 *
+	 * @return true if all steps are performed without exception; false otherwise
+	 *
+	 * @throws Exception if any of the web elements are not found or interaction fails
+	 *
+	 * @author Yaksha
 	 */
+
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;
 		try {
@@ -105,13 +117,30 @@ public class substore_page extends StartupPage {
 
 	}
 
+	
 	/**
-	 * @Test 1.2 about this method scrollDownAndClickSubstoreTab()
-	 * @param : null
-	 * @description : verify the Substore tab, scroll to it, and click it
-	 * @return : boolean
-	 * @author : YAKSHA
+	 * @Test Case 1.2: Scroll to and click on the "Substore" tab in the application UI
+	 *
+	 * @method scrollDownAndClickSubstoreTab()
+	 *
+	 * @description 
+	 * This method performs the following actions to interact with the Substore tab:
+	 * 
+	 * @steps
+	 * 1. Locate the "Substore" tab element using its defined locator.
+	 * 2. Scroll the page to bring the element into the visible viewport using JavaScript.
+	 * 3. Adjust the scroll position slightly upwards for optimal visibility (offset by 50 pixels).
+	 * 4. Highlight the "Substore" tab element for visual debugging (optional step).
+	 * 5. Click on the "Substore" tab to navigate to the corresponding section.
+	 * 6. Wait until the URL contains the substring "WardSupply" to ensure successful navigation.
+	 *
+	 * @return true if the tab is successfully clicked and the URL updates as expected; false otherwise
+	 *
+	 * @throws Exception if the element is not found or any JavaScript/WebDriver interaction fails
+	 *
+	 * @author Yaksha
 	 */
+
 	public boolean scrollDownAndClickSubstoreTab() throws Exception {
 		boolean scrolledTillElement = false;
 		try {
@@ -132,13 +161,29 @@ public class substore_page extends StartupPage {
 		return scrolledTillElement;
 	}
 
+	
 	/**
-	 * @Test1.3 about this method verifySubstorePageUrl()
-	 * @param : null
-	 * @description : return the URL of the current page. 
-	 * @return : String
-	 * @author : YAKSHA
+	 * @Test Case 1.3: Verify the current page URL after navigating to the Substore page
+	 *
+	 * @method verifySubstorePageUrl()
+	 *
+	 * @param None
+	 *
+	 * @description 
+	 * This method retrieves and returns the current URL of the active browser window. 
+	 * It is typically used to verify if navigation to the Substore page was successful.
+	 *
+	 * @steps
+	 * 1. Fetch the current URL from the browser using the WebDriver instance.
+	 * 2. Return the retrieved URL.
+	 *
+	 * @return The current page URL as a String
+	 *
+	 * @throws Exception if the WebDriver fails to retrieve the current URL
+	 *
+	 * @author YAKSHA
 	 */
+
 
 	public String verifySubstorePageUrl() throws Exception {
 		
@@ -149,14 +194,36 @@ public class substore_page extends StartupPage {
 			throw e;
 		}
 	}
-
+	
 	/**
-	 * @Test2 about this method clickFourthCounterIfAvailable( )
-	 * @param : null
-	 * @description : Clicks Counter modules
-	 * @return : Boolean
-	 * @throws : YAKSHA
+	 * @Test Case 2: Click on the fourth counter module if available
+	 *
+	 * @method clickFourthCounterIfAvailable()
+	 *
+	 * @param None
+	 *
+	 * @description 
+	 * This method attempts to click on the fourth counter button (module) if it is present 
+	 * in the list of located elements. It highlights the element before clicking it.
+	 *
+	 * @steps
+	 * 1. Locate all elements that match the "counter" locator.
+	 * 2. Check the number of counter elements found.
+	 * 3. If at least one counter element is found:
+	 *    - Highlight the first counter element in the list.
+	 *    - Click on the first counter element.
+	 *
+	 * @note 
+	 * Despite the method name suggesting the "fourth" counter, it currently clicks the **first** counter element.
+	 * Consider updating the logic or renaming the method for clarity.
+	 *
+	 * @return true if execution is successful without exceptions; false otherwise
+	 *
+	 * @throws Exception if locating elements or interaction fails
+	 *
+	 * @author YAKSHA
 	 */
+
 	public boolean clickFourthCounterIfAvailable() throws Exception {
 		try {
 			List<WebElement> counterElements = commonEvents.getWebElements(getCounterButtonFourth);
@@ -170,19 +237,34 @@ public class substore_page extends StartupPage {
 			throw e;
 		}
 	}
-
+	
 	/**
-	 * @Test3 about this method verifyModuleSignoutHoverText()
-	 * @param substoreExpectedData : Map<String, String> - Contains expected hover
-	 *                             text
-	 * @description : This method verifies that the hover text on the "Sign Out"
-	 *              module matches the expected value.
-	 * @return : boolean - true if the hover text matches the expected value, false
-	 *         otherwise.
-	 * @throws : Exception - if there is an issue finding the hover text or any
-	 *           other operation.
-	 * @author : YAKSHA
+	 * @Test Case 3: Verify the hover text of the "Sign Out" module
+	 *
+	 * @method verifyModuleSignoutHoverText(Map<String, String> substoreExpectedData)
+	 *
+	 * @param substoreExpectedData A map containing expected values for verification:
+	 *                             - "moduleSignOutHoverText": the expected hover text on the "Sign Out" module.
+	 *
+	 * @description 
+	 * This method verifies that the actual hover text displayed on the "Sign Out" module 
+	 * matches the expected text provided in the input map.
+	 *
+	 * @steps
+	 * 1. Click on the "Inventory" section to ensure the module is visible.
+	 * 2. Locate the "Sign Out" module element.
+	 * 3. Perform a mouse hover action over the "Sign Out" module using the Actions class.
+	 * 4. Retrieve the hover text element and get its text content.
+	 * 5. Compare the actual hover text with the expected value from the input map.
+	 * 6. Return true if they match; otherwise, throw an exception.
+	 *
+	 * @return true if the hover text matches the expected value; false otherwise
+	 *
+	 * @throws Exception if any element interaction fails or the hover text does not match
+	 *
+	 * @author YAKSHA
 	 */
+
 	public boolean verifyModuleSignoutHoverText(Map<String, String> substoreExpectedData) throws Exception {
 		try {
 			// Click on the "Inventory" section.
@@ -213,20 +295,34 @@ public class substore_page extends StartupPage {
 			throw new Exception("Failed to verify the hover text on the 'Sign Out' module: " + e.getMessage(), e);
 		}
 	}
-
+	
 	/**
-	 * @Test4 about this method verifySubstoreSubModule()
-	 * @param substoreExpectedData : Map<String, String> - A map containing expected
-	 *                             substore data, such as URLs or other related
-	 *                             information.
-	 * @description : This method verifies that the substore module's sub-modules
-	 *              (e.g., Inventory, Pharmacy) are visible and interactable.
-	 * @return : boolean - true if the sub-modules are visible and clickable, false
-	 *         otherwise.
-	 * @throws : Exception - if there is an issue finding or interacting with the
-	 *           sub-modules.
-	 * @author : YAKSHA
+	 * @Test Case 4: Verify visibility and clickability of substore sub-modules
+	 *
+	 * @method verifySubstoreSubModule(Map<String, String> substoreExpectedData)
+	 *
+	 * @param substoreExpectedData A map containing expected substore information,
+	 *                             such as:
+	 *                             - "URL": expected Substore page URL (used for logging/verification context).
+	 *
+	 * @description 
+	 * This method checks whether key sub-modules under the Substore section 
+	 * (such as "Inventory" and "Pharmacy") are present, visible, and can be interacted with.
+	 *
+	 * @steps
+	 * 1. Print the expected Substore URL for verification/debugging purposes.
+	 * 2. Locate the "Inventory" sub-module element using its locator.
+	 * 3. Locate the "Pharmacy" sub-module element using its locator.
+	 * 4. Highlight and click on the "Inventory" sub-module to verify it is interactable.
+	 * 5. Highlight and click on the "Pharmacy" sub-module to verify it is interactable.
+	 *
+	 * @return true if both sub-modules are successfully found and clicked without exceptions; false otherwise
+	 *
+	 * @throws Exception if any element is not found or an interaction fails during the process
+	 *
+	 * @author YAKSHA
 	 */
+
 	public boolean verifySubstoreSubModule(Map<String, String> substoreExpectedData) throws Exception {
 		try {
 			System.out.println("Substore Page URL: " + substoreExpectedData.get("URL"));
@@ -248,16 +344,33 @@ public class substore_page extends StartupPage {
 	}
 
 	/**
-	 * @Test5 about this method subModulePresent()
-	 * 
-	 * @param moduleName : String - The name of the module to verify.
-	 * @description : This method verifies if the specified module's sub-modules are
-	 *              present and visible.
-	 * @return : boolean - true if the sub-modules are displayed, false otherwise.
-	 * @throws : Exception - if there is an issue finding the sub-modules or if no
-	 *           elements are found.
-	 * @author : YAKSHA
+	 * @Test Case 5: Verify the presence and visibility of sub-modules under the "Inventory" module
+	 *
+	 * @method subModulePresentInventory()
+	 *
+	 * @param None (The method specifically targets the "Inventory" module)
+	 *
+	 * @description 
+	 * This method checks whether sub-modules under the "Inventory" section are present 
+	 * and visible on the UI. It clicks the Inventory module, retrieves all related 
+	 * sub-module elements, and verifies their visibility.
+	 *
+	 * @steps
+	 * 1. Click on the "Inventory" module to expand or display its sub-modules.
+	 * 2. Retrieve the list of sub-module WebElements using the defined locator.
+	 * 3. If sub-modules are found:
+	 *    - Iterate through each element and check if it is displayed.
+	 *    - Log the visibility of each sub-module.
+	 *    - Set the result flag to true if at least one is visible.
+	 * 4. If no sub-modules are found, log the information for debugging.
+	 *
+	 * @return true if at least one sub-module is visible; false otherwise
+	 *
+	 * @throws Exception if elements cannot be located or any interaction fails during the process
+	 *
+	 * @author YAKSHA
 	 */
+
 	public boolean subModulePresentInventory() throws Exception {
 		boolean areModulesDisplayed = false;
 		try {
@@ -286,14 +399,36 @@ public class substore_page extends StartupPage {
 	}
 
 	/**
-	 * @Test6 about this method verifyNavigationBetweenSubmodules()
-	 * 
-	 * @param : null
-	 * @description : This method verifies that the user is able to navigate between
-	 *              the sub modules.
-	 * @return : boolean
-	 * @author : YAKSHA
+	 * @Test Case 6: Verify navigation between Inventory sub-modules
+	 *
+	 * @method verifyNavigationBetweenSubmodules()
+	 *
+	 * @param None
+	 *
+	 * @description 
+	 * This method tests the navigation flow between multiple sub-modules under the 
+	 * "Inventory" section of the application. It clicks on each sub-module sequentially 
+	 * and validates successful navigation by checking URL fragments.
+	 *
+	 * @steps
+	 * 1. Click on the "Inventory" main module to ensure sub-modules are visible.
+	 * 2. Navigate to the following sub-modules, validating the URL after each:
+	 *    - Stock → URL should contain "Inventory/Stock"
+	 *    - Inventory Requisition → URL should contain "Inventory/InventoryRequisitionList"
+	 *    - Consumption → URL should contain "Inventory/Consumption/ConsumptionList"
+	 *    - Reports → URL should contain "Inventory/Reports"
+	 *    - Patient Consumption → URL should contain "Inventory/PatientConsumption/PatientConsumptionList"
+	 *    - Return → URL should contain "Inventory/Return"
+	 * 3. Navigate back to "Stock" to complete the flow.
+	 *
+	 * @return true if all sub-module navigations and URL verifications are successful; 
+	 *         false otherwise
+	 *
+	 * @throws Exception if any navigation or URL validation fails
+	 *
+	 * @author YAKSHA
 	 */
+
 	public boolean verifyNavigationBetweenSubmodules() throws Exception {
 		try {
 			// Clicking on the "Inventory" submodule to start navigation.
@@ -337,12 +472,29 @@ public class substore_page extends StartupPage {
 	}
 	
 	/**
-	 * @Test7 about this method takingScreenshotOfTheCurrentPage()
-	 * @param : null
-	 * @description : Taking screenshot of the current page.
-	 * @return : Boolean
-	 * @author : YAKSHA
+	 * @Test Case 7: Capture a screenshot of the current page
+	 *
+	 * @method takingScreenshotOfTheCurrentPage()
+	 *
+	 * @param None
+	 *
+	 * @description 
+	 * This method captures a screenshot of the current page during test execution. 
+	 * The screenshot is saved with the label "SubStore", which can help in debugging, 
+	 * reporting, or documentation of test steps.
+	 *
+	 * @steps
+	 * 1. Invoke the utility method to take a screenshot of the current browser view.
+	 * 2. Save the screenshot with the filename or identifier "SubStore".
+	 * 3. Set the status flag to true if the operation completes successfully.
+	 *
+	 * @return true if the screenshot is taken and saved successfully; false otherwise
+	 *
+	 * @throws Exception if any error occurs during the screenshot capture process
+	 *
+	 * @author YAKSHA
 	 */
+
 	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
 		boolean isDisplayed = false;
 		try {
@@ -356,20 +508,35 @@ public class substore_page extends StartupPage {
 	}
 
 	/**
-	 * @Test8 about this method
-	 *        verifyIfInventoryReqInputFieldsDropdownsAndCheckboxesAreVisibleOrNot()
-	 * 
-	 * @param : null
-	 * @description : This method verifies the visibility of various UI components
-	 *              on the page, including buttons, input fields, dropdowns, and
-	 *              checkboxes.
-	 * @return : boolean - Returns true if all specified UI components are
-	 *         displayed, otherwise false.
-	 * @throws : Exception - if there is an issue finding any of the UI components.
-	 * @author : YAKSHA
+	 * @Test Case 8: Verify the visibility of UI components on the Inventory Requisition page
+	 *
+	 * @method verifyIfInventoryReqInputFieldsDropdownsAndCheckboxesAreVisibleOrNot()
+	 *
+	 * @param None
+	 *
+	 * @description 
+	 * This method checks whether all critical UI elements such as buttons, input fields, 
+	 * dropdowns, radio buttons, and icons are visible on the Inventory Requisition page. 
+	 * If any of these elements are not displayed, the test fails with a descriptive message.
+	 *
+	 * @steps
+	 * 1. Click on the "Inventory Requisition" sub-module.
+	 * 2. Wait for the page to load by verifying the URL.
+	 * 3. Locate the following UI elements:
+	 *    - Navigation buttons: First, Previous, Next, Last
+	 *    - Action buttons: OK, Create Requisition
+	 *    - Input field: Search bar
+	 *    - Icon: Star icon
+	 *    - Radio buttons: Pending, Complete, Cancelled, Withdrawn, All
+	 * 4. Highlight each element and verify it is displayed on the page.
+	 * 5. If any element is not visible, throw an exception with the element name/text.
+	 *
+	 * @return true if all listed UI components are visible; false otherwise
+	 *
+	 * @throws Exception if any UI component is not found or not visible on the page
+	 *
+	 * @author YAKSHA
 	 */
-	
-	
 
 	public boolean verifyIfInventoryReqInputFieldsDropdownsAndCheckboxesAreVisibleOrNot() throws Exception {
 		boolean areAllFieldsDisplayed = false;
@@ -413,19 +580,31 @@ public class substore_page extends StartupPage {
 	}
 
 	/**
-	 * @Test9 about this method verifyCreateRequisitionButton()
-	 * 
-	 * @param : null
-	 * @description : This method verifies that the user is able to click the
-	 *              Requisition Button.
-	 * @return : String - The success message if the requisition is created
-	 *         successfully.
-	 * @author : YAKSHA
+	 * @Test Case 9: Verify functionality of the Create Requisition button
+	 *
+	 * @method verifyCreateRequisitionButton()
+	 *
+	 * @param None
+	 *
+	 * @description
+	 * This method tests the flow of creating a new requisition in the Inventory Requisition module.
+	 * It performs the following steps:
+	 * 1. Clicks the "Create Requisition" button and waits for the navigation to the requisition item page.
+	 * 2. Waits for the "Request" button to be visible.
+	 * 3. Fills in the target inventory field with "General-Inventory" and navigates through the form.
+	 * 4. Selects an item by entering the item name "tissue" and confirms selection.
+	 * 5. Enters the required quantity as "5".
+	 * 6. Clicks the "Request" button to submit the requisition.
+	 * 7. Verifies the success message "Requisition is Generated and Saved".
+	 * 8. Closes the confirmation popup and the requisition modal.
+	 *
+	 * @return String containing the success message displayed after creating the requisition.
+	 *
+	 * @throws Exception if any step fails during the requisition creation process, with a descriptive error message.
+	 *
+	 * @author YAKSHA
 	 */
-	
 
-	
-	
 	public String verifyCreateRequisitionButton() throws Exception {
 		String requisitionSuccessMessage = "";
 		try {
