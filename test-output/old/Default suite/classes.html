@@ -16,7 +16,7 @@
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>verifyNavigationBetweenSubmodules</td>
+<td>verifySubstoreSubModule</td>
 <td>sanity </td>
 </tr>
 <tr>
@@ -31,7 +31,7 @@
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>verifySubstoreSubModule</td>
+<td>verifyNavigationBetweenSubmodules</td>
 <td>sanity </td>
 </tr>
 <tr>
@@ -46,12 +46,12 @@
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>verifySubstoreCounterSubModule</td>
+<td>verifySubstoreSubModules</td>
 <td>sanity </td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>verifySubstoreSubModules</td>
+<td>verifySubstoreCounterSubModule</td>
 <td>sanity </td>
 </tr>
 <tr>
@@ -67,6 +67,10 @@
 <tr>
 <td align='center' colspan='3'>@AfterMethod</td>
 </tr>
+<tr>
+<td>&nbsp;</td>
+<td>retryIfTestFails</td>
+<td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>

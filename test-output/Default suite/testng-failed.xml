@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="testcases.substore_testcase">
+        <methods>
+          <include name="tearDown"/>
+          <include name="verifySubstoreSubModules"/>
+          <include name="retryIfTestFails"/>
+          <include name="verifySubstoreCounterSubModule"/>
+          <include name="verifyAllSubstoreModulesAreDisplayedInSublist"/>
+          <include name="verifySubstoreModule"/>
+          <include name="verifyCreateRequisitionButton"/>
+          <include name="verifyNavigationBetweenSubmodules"/>
+          <include name="verifyInventoryRequisitionSection"/>
+          <include name="verifySubstoreSubModule"/>
+          <include name="initBrowser"/>
+          <include name="takingScreenshotOfCurrentPage"/>
+        </methods>
+      </class> <!-- testcases.substore_testcase -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

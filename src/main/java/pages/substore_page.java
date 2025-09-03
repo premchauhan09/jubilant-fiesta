@@ -32,7 +32,7 @@ public class substore_page extends StartupPage {
     }
 
     // ========== Locators ==========
-    public By xyz = By.id("username_id");
+    public By getUsernameTextfieldLocator = By.id("username_id");
     public By getPasswordTextboxLocator = By.xpath("//input[@id='password']");
     public By getSignInButtonLocator = By.xpath("//button[@id='login']");
     public By getDropDownLocater = By.xpath("//a[@href='#/WardSupply']");
@@ -86,7 +86,7 @@ public class substore_page extends StartupPage {
 
     public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
         try {
-            WebElement username = driver.findElement(xyz);
+            WebElement username = driver.findElement(getUsernameTextfieldLocator);
             username.clear();
             username.sendKeys(expectedData.get("username"));
 
